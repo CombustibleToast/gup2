@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://r6te1gjlvxks"]
+
+[ext_resource type="Script" path="res://Player/plane.gd" id="1_dik0h"]
+
+[node name="Plane" type="Node3D"]
+script = ExtResource("1_dik0h")
