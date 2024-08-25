@@ -8,12 +8,12 @@
 
 [node name="Plane" parent="." instance=ExtResource("1_oh6mr")]
 
-[node name="Camera3D" type="Camera3D" parent="Plane"]
-transform = Transform3D(1, 0, 0, 0, 0.908548, 0.41778, 0, -0.41778, 0.908548, 0, 2.078, 4.651)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.137, 0, 0)
 
 [node name="Position reference" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.927, 0)
 mesh = SubResource("BoxMesh_bllbh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.474649, -0.790357, -0.387355, 0.27773, -0.552092, 0.786168, -0.835209, 0.265574, 0.481556, -6.677, 0, 0)
+transform = Transform3D(-0.236289, 0.500567, 0.832827, 0.776778, 0.612235, -0.147595, -0.583767, 0.612047, -0.533494, -6.677, 0, 0)

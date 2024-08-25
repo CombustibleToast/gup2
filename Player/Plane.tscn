@@ -1,12 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://r6te1gjlvxks"]
 
 [ext_resource type="Script" path="res://Player/plane.gd" id="1_dik0h"]
+[ext_resource type="PackedScene" uid="uid://b6l83anys04t4" path="res://Player/gup plane mockup.fbx" id="1_lesuo"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_ubn8g"]
-
-[node name="Plane" type="CharacterBody3D"]
+[node name="gup plane mockup" instance=ExtResource("1_lesuo")]
+transform = Transform3D(0.404, 0, 0, 0, 0.404, 0, 0, 0, 0.404, 0, 0, 0)
 script = ExtResource("1_dik0h")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_ubn8g")
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(-4.37114e-06, 100, 1.19209e-05, 0, -1.19209e-05, 100, 100, 4.37114e-06, 5.2108e-13, 0, 0, 0)
