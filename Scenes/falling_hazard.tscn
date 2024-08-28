@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://j0vfwtcifrln"]
+
+[ext_resource type="Script" path="res://Scenes/Falling Hazard.gd" id="1_73mn2"]
+[ext_resource type="Material" uid="uid://dtj4q366l8kc8" path="res://Scenes/placeholder_falling_hazard_mat.tres" id="2_lg4gj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3pn3u"]
+material = ExtResource("2_lg4gj")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6bwdi"]
+
+[node name="Falling Hazard" type="RigidBody3D"]
+script = ExtResource("1_73mn2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3pn3u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6bwdi")

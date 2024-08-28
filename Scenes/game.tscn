@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://sxf7e8hu761f"]
+[gd_scene load_steps=4 format=3 uid="uid://sxf7e8hu761f"]
 
 [ext_resource type="PackedScene" uid="uid://r6te1gjlvxks" path="res://Player/Plane.tscn" id="1_oh6mr"]
+[ext_resource type="PackedScene" uid="uid://j0vfwtcifrln" path="res://Scenes/falling_hazard.tscn" id="2_f6dgf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bllbh"]
 
@@ -17,3 +18,6 @@ mesh = SubResource("BoxMesh_bllbh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.236289, 0.500567, 0.832827, 0.776778, 0.612235, -0.147595, -0.583767, 0.612047, -0.533494, -6.677, 0, 0)
+
+[node name="Falling Hazard" parent="." instance=ExtResource("2_f6dgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68806, -0.267461)

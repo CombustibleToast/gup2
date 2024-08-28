@@ -22,4 +22,4 @@ func update_movement(delta):
 func clamp_to_bounds():
 	position = position.clamp(-BOUNDS, BOUNDS)
 
-	print(position)
+	# print(position)
