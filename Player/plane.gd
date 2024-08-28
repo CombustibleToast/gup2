@@ -33,7 +33,7 @@ func clamp_to_bounds():
 	# print(position)
 
 func body_entered(body:Node3D) -> void:
-	print("%s entered plane" % body.name)
+	# print("%s entered plane" % body.name)
 
 	# Ignore own body
 	if body.name == "Plane":

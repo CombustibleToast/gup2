@@ -10,7 +10,6 @@ func _ready() -> void:
 	angular_velocity = Vector3(randf_range(-1,1), randf_range(-1,1), randf_range(-1,1)).normalized()
 
 	# Connect to onhit signal
-	print(player_reference)
 	if !player_reference:
 		queue_free() #TODO: remove this after removing the single cube that isn't spawned
 	player_reference.connect("plane_hit", on_hit)	
@@ -20,11 +19,11 @@ func _process(delta: float) -> void:
 	pass
 
 func on_hit(incoming_name: String):
-	print("%s received signal!" % name)
 	#Ignore if hit wasn't this instance
 	if incoming_name != name:
 		return
 
+	print("%s received signal!" % name)
 	
 	# For now, just destroy
 	queue_free()
