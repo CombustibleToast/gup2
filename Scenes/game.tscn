@@ -21,3 +21,4 @@ transform = Transform3D(-0.236289, 0.500567, 0.832827, 0.776778, 0.612235, -0.14
 
 [node name="Falling Hazard" parent="." instance=ExtResource("2_f6dgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68806, -0.267461)
+axis_lock_linear_x = true
