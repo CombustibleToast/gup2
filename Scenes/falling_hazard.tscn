@@ -9,6 +9,8 @@ material = ExtResource("2_lg4gj")
 [sub_resource type="SphereShape3D" id="SphereShape3D_6bwdi"]
 
 [node name="Falling Hazard" type="RigidBody3D"]
+axis_lock_linear_x = true
+gravity_scale = 0.0
 script = ExtResource("1_73mn2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
