@@ -12,6 +12,9 @@ const MAX_SPAWN_TIME: float = 3
 @onready var next_spawn_time = 0
 @onready var time_elapsed = 0
 
+# Connections
+@onready var player: Node3D = $"../Plane"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -35,10 +38,11 @@ func handle_spawning(delta):
 	# Spawn the hazard
 	var new_hazard: Node3D = hazard_object.instantiate()
 	new_hazard.position = Vector3(0, SPAWN_HEIGHT, randf_range(SPAWN_Z_RANGE[0], SPAWN_Z_RANGE[1]))
+	new_hazard.player_reference = player
 	add_child(new_hazard)
 
 	# Reset timer
 	time_elapsed = 0
 	next_spawn_time = randf_range(MIN_SPAWN_TIME, MAX_SPAWN_TIME)
 
-	print("Spawned hazard @ %s, next in %s seconds" % [new_hazard.position, next_spawn_time])
+	# print("Spawned hazard @ %s, next in %s seconds" % [new_hazard.position, next_spawn_time])

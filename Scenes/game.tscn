@@ -26,4 +26,3 @@ hazard_object = ExtResource("2_f6dgf")
 
 [node name="Falling Hazard" parent="Hazard Spawner" instance=ExtResource("2_f6dgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68806, -0.267461)
-axis_lock_linear_x = true
