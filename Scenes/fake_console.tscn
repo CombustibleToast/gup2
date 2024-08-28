@@ -1,8 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc08gsakqpofs"]
+[gd_scene load_steps=9 format=3 uid="uid://dc08gsakqpofs"]
 
 [ext_resource type="PackedScene" uid="uid://bfi7a52divtpx" path="res://Visuals/Models/dual-pro v4.fbx" id="1_wm45d"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_84mhx"]
+viewport_path = NodePath("TopScreenView")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1w8a"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_84mhx")
+texture_filter = 0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_iwnrv"]
+viewport_path = NodePath("BotScreenView")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4b1t"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_iwnrv")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_s72rc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_858ge"]
+resource_local_to_scene = true
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4kvns"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="dual-pro v4" instance=ExtResource("1_wm45d")]
 
 [node name="Model" parent="." index="0"]
 transform = Transform3D(35, 0, 0, 0, -1.5299e-06, 35, 0, -35, -1.5299e-06, 0, 0, 0)
+surface_material_override/1 = SubResource("StandardMaterial3D_i1w8a")
+surface_material_override/2 = SubResource("StandardMaterial3D_i4b1t")
+
+[node name="TopScreenView" type="SubViewport" parent="." index="1"]
+canvas_item_default_texture_filter = 0
+size = Vector2i(256, 192)
+size_2d_override = Vector2i(256, 192)
+
+[node name="TopScreenCam" type="Camera3D" parent="TopScreenView" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 3.29552)
+
+[node name="BotScreenView" type="SubViewport" parent="." index="2"]
+canvas_item_default_texture_filter = 0
+size = Vector2i(256, 192)
+size_2d_override = Vector2i(256, 192)
+
+[node name="BotScreenCam" type="Camera3D" parent="BotScreenView" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.9789, 0, 3.29552)
+
+[node name="BlueCube" type="MeshInstance3D" parent="." index="3"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.371, 0.197, 5.823)
+mesh = SubResource("BoxMesh_s72rc")
+surface_material_override/0 = SubResource("StandardMaterial3D_858ge")
+
+[node name="BlueCube2" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 5.33625, 0.197, 5.823)
+mesh = SubResource("BoxMesh_s72rc")
+surface_material_override/0 = SubResource("StandardMaterial3D_4kvns")
