@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc08gsakqpofs"]
+
+[ext_resource type="PackedScene" uid="uid://bfi7a52divtpx" path="res://Visuals/Models/dual-pro v4.fbx" id="1_wm45d"]
+
+[node name="dual-pro v4" instance=ExtResource("1_wm45d")]
+
+[node name="Model" parent="." index="0"]
+transform = Transform3D(35, 0, 0, 0, -1.5299e-06, 35, 0, -35, -1.5299e-06, 0, 0, 0)

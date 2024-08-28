@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b6l83anys04t4"
-path="res://.godot/imported/gup plane mockup.fbx-02fba595931fd529ccdaf823b72c712e.scn"
+path="res://.godot/imported/gup plane mockup.fbx-79236b4708bd0dc87d7d789be3fee62c.scn"
 
 [deps]
 
-source_file="res://Player/gup plane mockup.fbx"
-dest_files=["res://.godot/imported/gup plane mockup.fbx-02fba595931fd529ccdaf823b72c712e.scn"]
+source_file="res://Visuals/Models/gup plane mockup.fbx"
+dest_files=["res://.godot/imported/gup plane mockup.fbx-79236b4708bd0dc87d7d789be3fee62c.scn"]
 
 [params]
 
