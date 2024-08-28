@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 var player_reference: Node3D # set by spawner
-var fall_direction: Vector3 = Vector3(0,-1,0) #Set by spawner when spawned, default is set here
+var fall_direction: Vector3 = Vector3(0,-2,0) #Set by spawner when spawned, default is set here
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

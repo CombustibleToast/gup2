@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://r6te1gjlvxks" path="res://Player/Plane.tscn" id="1_oh6mr"]
 [ext_resource type="PackedScene" uid="uid://j0vfwtcifrln" path="res://Scenes/falling_hazard.tscn" id="2_f6dgf"]
 [ext_resource type="Script" path="res://Scenes/hazard_spawner.gd" id="2_kbq7n"]
-[ext_resource type="PackedScene" path="res://Scenes/fake_console.tscn" id="4_6vogp"]
+[ext_resource type="PackedScene" uid="uid://dc08gsakqpofs" path="res://Scenes/fake_console.tscn" id="4_6vogp"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Plane" parent="." instance=ExtResource("1_oh6mr")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.236289, 0.500567, 0.832827, 0.776778, 0.612235, -0.147595, -0.583767, 0.612047, -0.533494, -6.677, 0, 0)
+transform = Transform3D(-0.236289, 0.500567, 0.832827, 0.776778, 0.612235, -0.147594, -0.583767, 0.612046, -0.533494, -6.677, 0, 0)
 
 [node name="Hazard Spawner" type="Node3D" parent="."]
 script = ExtResource("2_kbq7n")
@@ -18,3 +18,8 @@ hazard_object = ExtResource("2_f6dgf")
 
 [node name="dual-pro v4" parent="." instance=ExtResource("4_6vogp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.24216)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1, 3.388, -10.725)
+light_energy = 4.685
+omni_range = 8.32452
