@@ -10,7 +10,7 @@
 [node name="Plane" parent="." instance=ExtResource("1_oh6mr")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.236289, 0.500567, 0.832827, 0.776778, 0.612235, -0.147595, -0.583767, 0.612047, -0.533494, -6.677, 0, 0)
+transform = Transform3D(-0.106109, -0.44026, 0.891579, 0.82881, 0.45623, 0.323924, -0.549376, 0.77332, 0.316483, -6.677, 0, 0)
 
 [node name="Hazard Spawner" type="Node3D" parent="."]
 script = ExtResource("2_kbq7n")
