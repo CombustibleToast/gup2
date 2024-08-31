@@ -18,6 +18,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _physics_process(delta: float) -> void:
+	linear_velocity = fall_direction
+
 func on_hit(incoming_name: String):
 	#Ignore if hit wasn't this instance
 	if incoming_name != name:
