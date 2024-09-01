@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://r6te1gjlvxks"]
+[gd_scene load_steps=7 format=3 uid="uid://r6te1gjlvxks"]
 
 [ext_resource type="Script" path="res://Player/plane.gd" id="1_dik0h"]
 [ext_resource type="PackedScene" uid="uid://b6l83anys04t4" path="res://Visuals/Models/gup plane mockup.fbx" id="1_lesuo"]
 [ext_resource type="Texture2D" uid="uid://dyrckhapa1tmo" path="res://Visuals/Sprites/sizzlegupaviator.png" id="3_ji5tx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abv7l"]
+albedo_color = Color(0.212631, 0.302669, 0.193194, 1)
+metallic = 1.0
+roughness = 0.55
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mha4x"]
 size = Vector3(1, 1, 7.06107)
@@ -16,6 +21,7 @@ script = ExtResource("1_dik0h")
 
 [node name="Cube" parent="." index="0"]
 transform = Transform3D(-4.37114e-06, 100, 1.19209e-05, 0, -1.19209e-05, 100, 100, 4.37114e-06, 5.2108e-13, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_abv7l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 editor_description = "note: for bullet hell genre accuracy, this collision box is smaller than the visual model"
