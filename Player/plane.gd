@@ -7,6 +7,7 @@ const BOUNDS: Vector3 = Vector3(0,5,6)
 # Stats
 const MAX_HEALTH: float = 10
 @onready var health: float = MAX_HEALTH
+@onready var hp_label: Label = $"../dual-pro v4/TopScreenView/Control/Label"
 
 # Interactions
 signal plane_hit(name: String)
@@ -43,5 +44,6 @@ func body_entered(body:Node3D) -> void:
 
 	# Hit
 	health -= 1
+	hp_label.text = "HP: %d" % health
 	emit_signal("plane_hit", body.name)
 	print("Hit! Health is now %d" % health)

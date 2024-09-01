@@ -176,6 +176,7 @@ script = SubResource("GDScript_lcy06")
 hazard_object = ExtResource("2_f6dgf")
 
 [node name="Cloud Spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01238, 0.78711, -1.41143)
 script = SubResource("GDScript_1w8bl")
 cloud_object = ExtResource("4_ivgvp")
 
