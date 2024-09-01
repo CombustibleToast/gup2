@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://brc2o34fycu3s"]
+[gd_scene load_steps=12 format=3 uid="uid://brc2o34fycu3s"]
 
 [ext_resource type="PackedScene" uid="uid://bfi7a52divtpx" path="res://Visuals/Models/dual-pro v4.fbx" id="1_wm45d"]
 [ext_resource type="Texture2D" uid="uid://bae45hxmiyoy3" path="res://Visuals/Sprites/sizzledpdpad.png" id="2_jxyua"]
 [ext_resource type="Script" path="res://Scenes/mouse_event_forwarding.gd" id="2_ow1bo"]
 [ext_resource type="Texture2D" uid="uid://ggufq0n86mgg" path="res://Visuals/Sprites/sizzledpfacebuttons.png" id="3_010o5"]
-[ext_resource type="Script" path="res://Scenes/label.gd" id="3_fv54r"]
 [ext_resource type="Texture2D" uid="uid://drknfkikets7w" path="res://Visuals/Sprites/sizzledpgupbutton.png" id="4_jy8rq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_84mhx"]
@@ -65,12 +64,18 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="TopScreenView/Control" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TopScreenView/Control" index="0"]
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
+
+[node name="HPLabel" type="Label" parent="TopScreenView/Control/VBoxContainer" index="0"]
+layout_mode = 2
 text = "HP: 10"
-script = ExtResource("3_fv54r")
+
+[node name="FireLabel" type="Label" parent="TopScreenView/Control/VBoxContainer" index="1"]
+layout_mode = 2
+text = "FIRE: 0"
 
 [node name="BotScreenView" type="SubViewport" parent="." index="2"]
 canvas_item_default_texture_filter = 0

@@ -7,7 +7,7 @@ const BOUNDS: Vector3 = Vector3(0,5,6)
 # Stats
 const MAX_HEALTH: float = 10
 @onready var health: float = MAX_HEALTH
-@onready var hp_label: Label = $"../dual-pro v4/TopScreenView/Control/Label"
+@onready var hp_label: Label = $"../dual-pro v4/TopScreenView/Control/VBoxContainer/HPLabel"
 
 # Interactions
 signal plane_hit(name: String)

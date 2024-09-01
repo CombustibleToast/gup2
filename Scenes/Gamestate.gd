@@ -3,6 +3,7 @@ extends Node3D
 # Connections 
 @onready var player: Node3D = $"Plane"
 @onready var hazard_spawner: Node3D = $"Hazard Spawner"
+@onready var fire_label: Label = $"dual-pro v4/TopScreenView/Control/VBoxContainer/FireLabel"
 
 # Statistics
 @onready var fire_amount: float = 0
@@ -41,6 +42,7 @@ func lose():
 func hazard_hit_ground(node: Node3D):
 	# Increase fire amount
 	fire_amount += 1
+	fire_label.text = "FIRE: %d" % fire_amount
 	print("fire hit ground, now %f" % fire_amount)
 
 	# TODO: spawn the fire object where the hazard landed
