@@ -38,7 +38,7 @@ func check_loss_conditions():
 		lose()
 
 func lose():
-	pass
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 func hazard_hit_ground(node: Node3D):
 	# Increase fire amount
