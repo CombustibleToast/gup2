@@ -1,27 +1,37 @@
 # extends SubViewport
 extends Node3D
 
-@onready var viewport: SubViewport = $"TopScreenView"
-@onready var camera: Camera3D = $"TopScreenView/TopScreenCam"
+@onready var bottom_screen_hovered = false
 
 # copied from https://www.reddit.com/r/godot/comments/tx9x2b/a_guide_to_mouse_events_in_subviewports/
 
-# extends SubViewportContainer
+# extends ViewportContainer
 
 func _ready():
-	set_process_unhandled_input(true)
+	# set_process_unhandled_input(true)
+	pass
 
-func _input(event):
-	# fix by ArdaE https://github.com/godotengine/godot/issues/17326#issuecomment-431186323
-	# print("Event!")
-	if event is InputEventMouse:
-		viewport.push_input(event, true)
-		var mouseEvent: InputEventMouse = event.duplicate()
-		var eventNewPos: Vector3 = Vector3(event.position.x, event.position.y, 0)
-		eventNewPos = camera.global_transform.affine_inverse() * eventNewPos
-		mouseEvent.position = Vector2(eventNewPos.x, eventNewPos.y)
-		# viewport._unhandled_input(mouseEvent)
-		viewport.push_input(mouseEvent)
-	else:
-		pass
-		# child._unhandled_input(event)
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("click") && bottom_screen_hovered:
+		$"..".bottom_screen_clicked()
+
+# func _input(event):
+# 	# fix by ArdaE https://github.com/godotengine/godot/issues/17326#issuecomment-431186323
+# 	for child in get_children():
+# 		if event is InputEventMouse:
+# 			var mouseEvent = event.duplicate()
+# 			# mouseEvent.position = get_global_transform_with_canvas().affine_inverse() * event.position
+# 			mouseEvent.position = get_final_transform().inverse() * event.position
+# 			child.unhandled_input(mouseEvent)
+# 		else:
+# 			child.unhandled_input(event)
+
+
+func mouse_entered_bottom_screen() -> void:
+	bottom_screen_hovered = true
+	pass # Replace with function body.
+
+
+func mouse_exited_bottom_screen() -> void:
+	bottom_screen_hovered = false
+	pass # Replace with function body.

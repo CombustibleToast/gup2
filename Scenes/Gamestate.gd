@@ -49,3 +49,8 @@ func hazard_hit_ground(node: Node3D):
 	
 	# Delete the hazard object
 	node.queue_free()
+
+func bottom_screen_clicked():
+	fire_amount -= 0.1;
+	fire_amount = 0.0 if fire_amount < 0 else fire_amount
+	print("fire now %f" % fire_amount)

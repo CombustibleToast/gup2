@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bae45hxmiyoy3"
-path.bptc="res://.godot/imported/sizzledpdpad.png-e8192e86d06a13802534f5fbc0323129.bptc.ctex"
+path="res://.godot/imported/sizzledpdpad.png-e8192e86d06a13802534f5fbc0323129.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Visuals/Sprites/sizzledpdpad.png"
-dest_files=["res://.godot/imported/sizzledpdpad.png-e8192e86d06a13802534f5fbc0323129.bptc.ctex"]
+dest_files=["res://.godot/imported/sizzledpdpad.png-e8192e86d06a13802534f5fbc0323129.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
