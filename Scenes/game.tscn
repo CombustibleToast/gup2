@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://sxf7e8hu761f"]
 
+[ext_resource type="Script" path="res://Scenes/Gamestate.gd" id="1_hbgc3"]
 [ext_resource type="PackedScene" uid="uid://r6te1gjlvxks" path="res://Player/Plane.tscn" id="1_oh6mr"]
-[ext_resource type="PackedScene" uid="uid://l67d8h2srb8r" path="res://Scenes/falling_hazard.tscn" id="2_f6dgf"]
-[ext_resource type="PackedScene" uid="uid://brc2o34fycu3s" path="res://Scenes/fake_console.tscn" id="4_6vogp"]
-[ext_resource type="PackedScene" uid="uid://h5w5f6bnc3sh" path="res://Scenes/cloud.tscn" id="4_ivgvp"]
+[ext_resource type="PackedScene" uid="uid://j0vfwtcifrln" path="res://Scenes/falling_hazard.tscn" id="2_f6dgf"]
+[ext_resource type="PackedScene" uid="uid://dc08gsakqpofs" path="res://Scenes/fake_console.tscn" id="4_6vogp"]
+[ext_resource type="PackedScene" path="res://Scenes/cloud.tscn" id="4_ivgvp"]
 [ext_resource type="PackedScene" uid="uid://dg2ono1gyww8s" path="res://Scenes/ground.tscn" id="5_v7pdm"]
-[ext_resource type="AudioStream" uid="uid://djmk43ocpx5eq" path="res://Sounds/flying2.4.mp3" id="6_jhepa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fahu5"]
 sky_top_color = Color(0.049561, 0.46462, 0.75719, 1)
@@ -162,6 +162,7 @@ size = Vector3(8.56665, 1, 48.2139)
 [sub_resource type="QuadMesh" id="QuadMesh_xcsse"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_hbgc3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4me7c")
@@ -205,8 +206,7 @@ transform = Transform3D(4.73, 0, 0, 0, -1.59481e-06, 4.73, 0, -36.485, -2.06755e
 visible = false
 mesh = SubResource("QuadMesh_xcsse")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_jhepa")
-volume_db = -15.169
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 autoplay = true
-parameters/looping = true

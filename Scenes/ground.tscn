@@ -74,7 +74,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vp1e7")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_41wdh"]
-size = Vector3(974.122, 1, 199.623)
+size = Vector3(974.122, 1, 453.131)
 
 [node name="Ground" instance=ExtResource("2_h57k1")]
 script = ExtResource("2_u6nu1")
@@ -87,7 +87,8 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -955.169, -0.458, 0)
 mesh = SubResource("ArrayMesh_tpwem")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="." index="2"]
+[node name="Hazard ground trigger" type="Area3D" parent="." index="2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazard ground trigger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.0261, 0)
 shape = SubResource("BoxShape3D_41wdh")
