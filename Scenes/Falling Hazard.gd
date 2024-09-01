@@ -50,14 +50,14 @@ func _on_area_entered(area:Area3D) -> void:
 
 func handle_teleport():
 	# Hazard needs to fall towards the center of the ground plane, otherwise it will fall out of the screen
-	fall_direction += Vector3(-20,-5,-5)
+	fall_direction += Vector3(-20,-3,-5)
 	axis_lock_linear_x = false
 
 	# Make it clickable
 	clickable = true
 
 func handle_ground():
-	pass
+	get_parent().get_parent().hazard_hit_ground(self)
 
 func handle_click():
 	if hovered && Input.is_action_just_pressed("click"):
