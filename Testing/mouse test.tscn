@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://jsut048nmv2m"]
+
+[ext_resource type="PackedScene" uid="uid://j0vfwtcifrln" path="res://Scenes/falling_hazard.tscn" id="1_2cpob"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="Falling Hazard" parent="." instance=ExtResource("1_2cpob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.33705)

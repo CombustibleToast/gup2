@@ -6,7 +6,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_3pn3u"]
 material = ExtResource("2_lg4gj")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6bwdi"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fjyfr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4cpag"]
 
@@ -19,11 +19,13 @@ script = ExtResource("1_73mn2")
 mesh = SubResource("BoxMesh_3pn3u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_6bwdi")
+shape = SubResource("BoxShape3D_fjyfr")
 
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_4cpag")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_entered"]
