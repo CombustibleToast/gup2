@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://brc2o34fycu3s"]
+[gd_scene load_steps=12 format=3 uid="uid://dc08gsakqpofs"]
 
 [ext_resource type="PackedScene" uid="uid://bfi7a52divtpx" path="res://Visuals/Models/dual-pro v4.fbx" id="1_wm45d"]
+[ext_resource type="Texture2D" uid="uid://bae45hxmiyoy3" path="res://Visuals/Sprites/sizzledpdpad.png" id="2_jxyua"]
+[ext_resource type="Script" path="res://Scenes/mouse_event_forwarding.gd" id="2_ow1bo"]
+[ext_resource type="Texture2D" uid="uid://ggufq0n86mgg" path="res://Visuals/Sprites/sizzledpfacebuttons.png" id="3_010o5"]
+[ext_resource type="Texture2D" uid="uid://drknfkikets7w" path="res://Visuals/Sprites/sizzledpgupbutton.png" id="4_jy8rq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_84mhx"]
 viewport_path = NodePath("TopScreenView")
@@ -20,7 +24,14 @@ shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_iwnrv")
 texture_filter = 0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55mft"]
+albedo_color = Color(0.187176, 0.187176, 0.187176, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5ojqu"]
+material = SubResource("StandardMaterial3D_55mft")
+
 [node name="dual-pro v4" instance=ExtResource("1_wm45d")]
+script = ExtResource("2_ow1bo")
 
 [node name="Model" parent="." index="0"]
 transform = Transform3D(35, 0, 0, 0, -1.5299e-06, 35, 0, -35, -1.5299e-06, 19.9642, 0, -6.45494)
@@ -31,8 +42,13 @@ surface_material_override/2 = SubResource("StandardMaterial3D_i4b1t")
 transform = Transform3D(0.0285714, 0, 0, 0, -1.2489e-09, -0.0285714, 0, 0.0285714, -1.2489e-09, 0, -0.0975715, -4.26499e-09)
 current = true
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" index="1"]
+transform = Transform3D(0.475, 0, 0, 0, -2.07629e-08, -0.475, 0, 0.475, -2.07629e-08, 0, 0.0746857, 3.26462e-09)
+mesh = SubResource("QuadMesh_5ojqu")
+
 [node name="TopScreenView" type="SubViewport" parent="." index="1"]
 canvas_item_default_texture_filter = 0
+physics_object_picking = true
 size = Vector2i(256, 192)
 size_2d_override = Vector2i(256, 192)
 
@@ -44,6 +60,8 @@ size = 10.0
 
 [node name="BotScreenView" type="SubViewport" parent="." index="2"]
 canvas_item_default_texture_filter = 0
+physics_object_picking = true
+physics_object_picking_sort = true
 size = Vector2i(256, 192)
 size_2d_override = Vector2i(256, 192)
 
@@ -51,3 +69,18 @@ size_2d_override = Vector2i(256, 192)
 transform = Transform3D(-4.37114e-08, -0.657375, 0.753563, 0, 0.753563, 0.657375, -1, 2.87348e-08, -3.29393e-08, 11.0062, -6.42605, 0)
 keep_aspect = 0
 size = 10.0
+
+[node name="Dpad sprite" type="Sprite3D" parent="." index="3"]
+transform = Transform3D(0.743, 0, 0, 0, 0.730009, 0.138333, 0, -0.138333, 0.730009, 17.9413, -1.136, -6.3574)
+texture_filter = 0
+texture = ExtResource("2_jxyua")
+
+[node name="Face button sprite" type="Sprite3D" parent="." index="4"]
+transform = Transform3D(0.732017, 0, 0, 0, 0.719218, 0.136288, 0, -0.136288, 0.719218, 22.0112, -1.136, -6.3574)
+texture_filter = 0
+texture = ExtResource("3_010o5")
+
+[node name="gup button sprite" type="Sprite3D" parent="." index="5"]
+transform = Transform3D(0.732017, 0, 0, 0, 0.719218, 0.136288, 0, -0.136288, 0.719218, 21.65, -1.99479, -6.20548)
+texture_filter = 0
+texture = ExtResource("4_jy8rq")
