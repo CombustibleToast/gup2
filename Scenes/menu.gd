@@ -1,8 +1,8 @@
 extends Control
 
 func _on_play_pressed():
-	#play click sound effect
-	#$AudioStreamPlayer.play()
+	
+	#change scene to game
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 	
 
