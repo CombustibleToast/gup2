@@ -30,4 +30,3 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -111.6
 
 [node name="Debug Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.617381, -0.133143, 0.775316, 0.0197242, 0.987883, 0.153941, -0.786417, -0.0797474, 0.612526, 160.436, 24.7245, 124.696)
-current = true
