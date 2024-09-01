@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://h5w5f6bnc3sh"]
+
+[ext_resource type="Script" path="res://Scenes/cloud.gd" id="1_0icfx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vo28g"]
+emission_enabled = true
+emission = Color(0.856436, 0.813326, 0.838333, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3pn3u"]
+material = SubResource("StandardMaterial3D_vo28g")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6bwdi"]
+
+[node name="cloud" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 2
+axis_lock_linear_y = true
+gravity_scale = 0.0
+script = ExtResource("1_0icfx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3pn3u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6bwdi")

@@ -1,12 +1,164 @@
-[gd_scene load_steps=6 format=3 uid="uid://sxf7e8hu761f"]
+[gd_scene load_steps=11 format=3 uid="uid://sxf7e8hu761f"]
 
 [ext_resource type="PackedScene" uid="uid://r6te1gjlvxks" path="res://Player/Plane.tscn" id="1_oh6mr"]
-[ext_resource type="PackedScene" uid="uid://j0vfwtcifrln" path="res://Scenes/falling_hazard.tscn" id="2_f6dgf"]
-[ext_resource type="Script" path="res://Scenes/hazard_spawner.gd" id="2_kbq7n"]
-[ext_resource type="PackedScene" uid="uid://dc08gsakqpofs" path="res://Scenes/fake_console.tscn" id="4_6vogp"]
+[ext_resource type="PackedScene" uid="uid://l67d8h2srb8r" path="res://Scenes/falling_hazard.tscn" id="2_f6dgf"]
+[ext_resource type="PackedScene" uid="uid://brc2o34fycu3s" path="res://Scenes/fake_console.tscn" id="4_6vogp"]
+[ext_resource type="PackedScene" uid="uid://h5w5f6bnc3sh" path="res://Scenes/cloud.tscn" id="4_ivgvp"]
 [ext_resource type="PackedScene" uid="uid://dg2ono1gyww8s" path="res://Scenes/ground.tscn" id="5_v7pdm"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fahu5"]
+sky_top_color = Color(0.049561, 0.46462, 0.75719, 1)
+sky_horizon_color = Color(0.617225, 0.707254, 0.764476, 1)
+ground_bottom_color = Color(0.419338, 0.364395, 0.300716, 1)
+ground_horizon_color = Color(0.617225, 0.707254, 0.764476, 1)
+
+[sub_resource type="Sky" id="Sky_4vqh6"]
+sky_material = SubResource("ProceduralSkyMaterial_fahu5")
+
+[sub_resource type="Environment" id="Environment_4me7c"]
+background_mode = 2
+sky = SubResource("Sky_4vqh6")
+ambient_light_sky_contribution = 0.25
+tonemap_mode = 2
+
+[sub_resource type="GDScript" id="GDScript_lcy06"]
+script/source = "extends Node3D
+
+# Spawning Object
+@export var hazard_object: PackedScene
+const SPAWN_Z_RANGE: Array = [-7,7]
+const SPAWN_HEIGHT: float = 5
+const FALL_DIRECTION_MAX_PLANE_RADIUS: float = 1
+const FALL_VELOCITY_SPEED_RANGE: Array = [2,5]
+
+# Spawn Time
+@onready var spawning: bool = true # used to pause the countdown timer for spawning
+const MIN_SPAWN_TIME: float = 1
+const MAX_SPAWN_TIME: float = 3
+@onready var next_spawn_time = 0
+@onready var time_elapsed = 0
+
+# Connections
+@onready var player: Node3D = $\"../Plane\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	handle_spawning(delta)
+
+func handle_spawning(delta):
+	# Do nothing if no spawning
+	if !spawning:
+		return
+
+	time_elapsed += delta
+
+	# If the time elapsed hasn't been passed, finish here
+	if time_elapsed < next_spawn_time:
+		return
+
+	# Pick a location to spawn the hazard
+	var MAX_Z = player.BOUNDS.z
+	var spawn_location = Vector3(0, SPAWN_HEIGHT, randf_range(-MAX_Z, MAX_Z))
+
+	# Pick a direction to fall towards, i.e. pick a spot near the plane and fall in that direction
+	# Randomly generate a polar coordinate around the plane
+	var r: float = randf_range(0, FALL_DIRECTION_MAX_PLANE_RADIUS)
+	var theta: float = randf_range(0, 2 * PI)
+	var point: Vector3 = Vector3(0, r * sin(theta), r * cos(theta)) + player.position
+
+	# Create a direction vector from the spawn location to the above point, normalize, and apply speed
+	var direction = point - spawn_location
+	direction = direction.normalized()
+	direction *= randf_range(FALL_VELOCITY_SPEED_RANGE[0], FALL_VELOCITY_SPEED_RANGE[1])
+
+	# Spawn the hazard
+	var new_hazard: Node3D = hazard_object.instantiate()
+	new_hazard.position = spawn_location
+	new_hazard.fall_direction = direction
+	new_hazard.player_reference = player
+	add_child(new_hazard)
+
+	# Reset timer
+	time_elapsed = 0
+	next_spawn_time = randf_range(MIN_SPAWN_TIME, MAX_SPAWN_TIME)
+
+	# print(\"Spawned hazard @ %s, next in %s seconds\" % [new_hazard.position, next_spawn_time])
+"
+
+[sub_resource type="GDScript" id="GDScript_1w8bl"]
+script/source = "extends Node3D
+
+# Spawning Object
+@export var cloud_object: PackedScene
+const SPAWN_Z_RANGE: Array = [-7,7]
+const SPAWN_HEIGHT: float = 5
+const FALL_DIRECTION_MAX_PLANE_RADIUS: float = 1
+const FALL_VELOCITY_SPEED_RANGE: Array = [2,5]
+
+# Spawn Time
+@onready var spawning: bool = true # used to pause the countdown timer for spawning
+const MIN_SPAWN_TIME: float = 1
+const MAX_SPAWN_TIME: float = 3
+@onready var next_spawn_time = 0
+@onready var time_elapsed = 0
+
+# Connections
+@onready var player: Node3D = $\"../Plane\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	handle_spawning(delta)
+
+func handle_spawning(delta):
+	# Do nothing if no spawning
+	if !spawning:
+		return
+
+	time_elapsed += delta
+
+	# If the time elapsed hasn't been passed, finish here
+	if time_elapsed < next_spawn_time:
+		return
+
+	# Pick a location to spawn the cloud
+	var MAX_Z = player.BOUNDS.z
+	var spawn_location = Vector3(0, SPAWN_HEIGHT, randf_range(-MAX_Z, MAX_Z))
+
+	# set the cloud to move towards the left
+	var direction = Vector3(-1,0,0)
+
+	# Create a direction vector from the spawn location to the above point, normalize, and apply speed
+	direction = direction.normalized()
+	direction *= randf_range(FALL_VELOCITY_SPEED_RANGE[0], FALL_VELOCITY_SPEED_RANGE[1])
+
+	# Spawn the cloud
+	var new_cloud: Node3D = cloud_object.instantiate()
+	new_cloud.position = spawn_location
+	new_cloud.fall_direction = direction
+	new_cloud.player_reference = player
+	add_child(new_cloud)
+
+	# Reset timer
+	time_elapsed = 0
+	next_spawn_time = randf_range(MIN_SPAWN_TIME, MAX_SPAWN_TIME)
+
+	# print(\"Spawned cloud @ %s, next in %s seconds\" % [new_cloud.position, next_spawn_time])
+"
+
 [node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4me7c")
 
 [node name="Plane" parent="." instance=ExtResource("1_oh6mr")]
 
@@ -14,8 +166,12 @@
 transform = Transform3D(-0.80018, -0.322354, 0.505766, 0.137578, 0.722141, 0.677926, -0.583767, 0.612046, -0.533494, -6.677, 0, 0)
 
 [node name="Hazard Spawner" type="Node3D" parent="."]
-script = ExtResource("2_kbq7n")
+script = SubResource("GDScript_lcy06")
 hazard_object = ExtResource("2_f6dgf")
+
+[node name="Cloud Spawner" type="Node3D" parent="."]
+script = SubResource("GDScript_1w8bl")
+cloud_object = ExtResource("4_ivgvp")
 
 [node name="dual-pro v4" parent="." instance=ExtResource("4_6vogp")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -250.379, 0, -6.24216)

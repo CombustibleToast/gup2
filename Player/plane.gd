@@ -38,6 +38,8 @@ func body_entered(body:Node3D) -> void:
 	# Ignore own body
 	if body.name == "Plane":
 		return
+	if body.name == "Cloud":
+		return
 
 	# Hit
 	health -= 1
