@@ -1,17 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://sxf7e8hu761f"]
+[gd_scene load_steps=6 format=3 uid="uid://sxf7e8hu761f"]
 
 [ext_resource type="PackedScene" uid="uid://r6te1gjlvxks" path="res://Player/Plane.tscn" id="1_oh6mr"]
-[ext_resource type="PackedScene" uid="uid://j0vfwtcifrln" path="res://Scenes/falling_hazard.tscn" id="2_f6dgf"]
-[ext_resource type="Script" path="res://Scenes/hazard_spawner.gd" id="2_kbq7n"]
-[ext_resource type="PackedScene" uid="uid://dc08gsakqpofs" path="res://Scenes/fake_console.tscn" id="4_6vogp"]
+[ext_resource type="PackedScene" uid="uid://l67d8h2srb8r" path="res://Scenes/falling_hazard.tscn" id="2_f6dgf"]
+[ext_resource type="PackedScene" uid="uid://brc2o34fycu3s" path="res://Scenes/fake_console.tscn" id="4_6vogp"]
+[ext_resource type="PackedScene" uid="uid://h5w5f6bnc3sh" path="res://Scenes/cloud.tscn" id="4_ivgvp"]
 [ext_resource type="PackedScene" uid="uid://dg2ono1gyww8s" path="res://Scenes/ground.tscn" id="5_v7pdm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kbx7x"]
-size = Vector3(8.56665, 1, 48.2139)
-
-[sub_resource type="QuadMesh" id="QuadMesh_xcsse"]
-
 [node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4me7c")
 
 [node name="Plane" parent="." instance=ExtResource("1_oh6mr")]
 
@@ -19,8 +17,12 @@ size = Vector3(8.56665, 1, 48.2139)
 transform = Transform3D(-0.80018, -0.322354, 0.505766, 0.137578, 0.722141, 0.677926, -0.583767, 0.612046, -0.533494, -6.677, 0, 0)
 
 [node name="Hazard Spawner" type="Node3D" parent="."]
-script = ExtResource("2_kbq7n")
+script = SubResource("GDScript_lcy06")
 hazard_object = ExtResource("2_f6dgf")
+
+[node name="Cloud Spawner" type="Node3D" parent="."]
+script = SubResource("GDScript_1w8bl")
+cloud_object = ExtResource("4_ivgvp")
 
 [node name="dual-pro v4" parent="." instance=ExtResource("4_6vogp")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -250.379, 0, -6.24216)
