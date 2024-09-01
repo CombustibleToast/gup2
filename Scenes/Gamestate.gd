@@ -19,7 +19,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	grow_fire_amount(delta)
 
-	# TODO: update graphic that shows fire amount
+	# update graphic that shows fire amount
+	fire_label.text = "FIRE: %.2f" % fire_amount
 	# TODO: update health graphic
 
 	check_loss_conditions()
@@ -42,10 +43,14 @@ func lose():
 func hazard_hit_ground(node: Node3D):
 	# Increase fire amount
 	fire_amount += 1
-	fire_label.text = "FIRE: %.2f" % fire_amount
-	print("fire hit ground, now %f" % fire_amount)
+	# print("fire hit ground, now %f" % fire_amount)
 
 	# TODO: spawn the fire object where the hazard landed
 	
 	# Delete the hazard object
 	node.queue_free()
+
+func bottom_screen_clicked():
+	fire_amount -= 0.1;
+	fire_amount = 0.0 if fire_amount < 0 else fire_amount
+	print("fire now %f" % fire_amount)
