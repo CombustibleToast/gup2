@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 var player_reference: Node3D # set by spawner
+var ground_reference: Node3D # set by spawner
 var fall_direction: Vector3 = Vector3(0,-2,0) #Set by spawner when spawned, default is set here
 
 # Called when the node enters the scene tree for the first time.
@@ -26,7 +27,29 @@ func on_hit(incoming_name: String):
 	if incoming_name != name:
 		return
 
-	print("%s received signal!" % name)
+	# print("%s received signal!" % name)
 	
 	# For now, just destroy
 	queue_free()
+
+func _on_area_entered(area:Area3D) -> void:
+	var aname = area.name
+
+	# if aname != "Hazard teleport trigger" && aname != "Hazard ground trigger":
+	# 	return
+
+	# print("%s entered %s" % [name, aname])
+
+	if aname == "Hazard teleport trigger":
+		handle_teleport()
+
+	if aname == "Hazard ground trigger":
+		handle_ground()
+
+func handle_teleport():
+	# Hazard needs to fall towards the center of the ground plane, otherwise it will fall out of the screen
+	fall_direction += Vector3(-20,-5,-5)
+	axis_lock_linear_x = false
+
+func handle_ground():
+	pass

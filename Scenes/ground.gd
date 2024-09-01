@@ -5,7 +5,7 @@ extends Node3D
 @onready var current_piece_distance_moved: float = 500
 const DISTANCE_BEFORE_SWAP: float = 955
 const SWAP_TO_LOCATION: Vector3 = Vector3(-955 * 1.5,0,0)
-const VELOCITY : Vector3 = Vector3(100,0,0) 
+const VELOCITY : Vector3 = Vector3(50,0,0) 
 
 var num_spawned : int
 var is_flying : bool = true
@@ -41,7 +41,7 @@ func handle_swap():
 	# Move the next piece to the move location
 	var new_piece: MeshInstance3D = pieces[current_piece_index]
 	new_piece.position = SWAP_TO_LOCATION
-	print("Moving %s to %s" % [new_piece.name, SWAP_TO_LOCATION])
+	# print("Moving %s to %s" % [new_piece.name, SWAP_TO_LOCATION])
 
 	# Reset the running movement tracker
 	current_piece_distance_moved = 0

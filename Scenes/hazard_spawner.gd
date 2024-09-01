@@ -5,7 +5,8 @@ extends Node3D
 const SPAWN_Z_RANGE: Array = [-7,7]
 const SPAWN_HEIGHT: float = 5
 const FALL_DIRECTION_MAX_PLANE_RADIUS: float = 1
-const FALL_VELOCITY_SPEED_RANGE: Array = [2,5]
+const FALL_VELOCITY_SPEED_RANGE: Array = [5,8]
+# const FALL_VELOCITY_SPEED_RANGE: Array = [2,5]
 
 # Spawn Time
 @onready var spawning: bool = true # used to pause the countdown timer for spawning
@@ -16,6 +17,7 @@ const MAX_SPAWN_TIME: float = 3
 
 # Connections
 @onready var player: Node3D = $"../Plane"
+@onready var ground: Node3D = $"../Ground"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -57,6 +59,7 @@ func handle_spawning(delta):
 	new_hazard.position = spawn_location
 	new_hazard.fall_direction = direction
 	new_hazard.player_reference = player
+	new_hazard.ground_reference = ground
 	add_child(new_hazard)
 
 	# Reset timer

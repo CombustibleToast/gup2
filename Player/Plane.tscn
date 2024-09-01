@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://r6te1gjlvxks"]
+[gd_scene load_steps=6 format=3 uid="uid://r6te1gjlvxks"]
 
 [ext_resource type="Script" path="res://Player/plane.gd" id="1_dik0h"]
 [ext_resource type="PackedScene" uid="uid://b6l83anys04t4" path="res://Visuals/Models/gup plane mockup.fbx" id="1_lesuo"]
+[ext_resource type="Texture2D" uid="uid://dyrckhapa1tmo" path="res://Visuals/Sprites/sizzlegupaviator.png" id="3_ji5tx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mha4x"]
 size = Vector3(1, 1, 7.06107)
@@ -26,5 +27,10 @@ shape = SubResource("BoxShape3D_mha4x")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168823, 2.2211)
 shape = SubResource("BoxShape3D_e8q6x")
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="3"]
+transform = Transform3D(-4.24999e-07, 0, 9.72286, 0, 9.72286, 0, -9.72286, 0, -4.24999e-07, 0, 1.192, 1.302)
+texture_filter = 0
+texture = ExtResource("3_ji5tx")
 
 [connection signal="body_entered" from="Area3D" to="." method="body_entered"]

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 # Movement
-const SPEED = 5.0
+const SPEED = 8.0
 const BOUNDS: Vector3 = Vector3(0,5,6)
 
 # Stats

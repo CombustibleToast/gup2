@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://sxf7e8hu761f"]
+[gd_scene load_steps=8 format=3 uid="uid://sxf7e8hu761f"]
 
 [ext_resource type="PackedScene" uid="uid://r6te1gjlvxks" path="res://Player/Plane.tscn" id="1_oh6mr"]
 [ext_resource type="PackedScene" uid="uid://j0vfwtcifrln" path="res://Scenes/falling_hazard.tscn" id="2_f6dgf"]
 [ext_resource type="Script" path="res://Scenes/hazard_spawner.gd" id="2_kbq7n"]
 [ext_resource type="PackedScene" uid="uid://dc08gsakqpofs" path="res://Scenes/fake_console.tscn" id="4_6vogp"]
 [ext_resource type="PackedScene" uid="uid://dg2ono1gyww8s" path="res://Scenes/ground.tscn" id="5_v7pdm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kbx7x"]
+size = Vector3(8.56665, 1, 48.2139)
+
+[sub_resource type="QuadMesh" id="QuadMesh_xcsse"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -29,4 +34,15 @@ omni_range = 8.32452
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -111.673, -68.5487, 455.365)
 
 [node name="Debug Camera" type="Camera3D" parent="."]
-transform = Transform3D(0.617381, -0.133143, 0.775316, 0.0197242, 0.987883, 0.153941, -0.786417, -0.0797474, 0.612526, 160.436, 24.7245, 124.696)
+transform = Transform3D(0.617381, -0.133143, 0.775316, 0.0197242, 0.987883, 0.153941, -0.786417, -0.0797474, 0.612526, 16.9694, -0.23402, 22.1107)
+
+[node name="Hazard teleport trigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.92578, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazard teleport trigger"]
+shape = SubResource("BoxShape3D_kbx7x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hazard teleport trigger"]
+transform = Transform3D(4.73, 0, 0, 0, -1.59481e-06, 4.73, 0, -36.485, -2.06755e-07, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_xcsse")
