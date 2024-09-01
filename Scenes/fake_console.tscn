@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dc08gsakqpofs"]
+[gd_scene load_steps=12 format=3 uid="uid://dc08gsakqpofs"]
 
 [ext_resource type="PackedScene" uid="uid://bfi7a52divtpx" path="res://Visuals/Models/dual-pro v4.fbx" id="1_wm45d"]
 [ext_resource type="Texture2D" uid="uid://bae45hxmiyoy3" path="res://Visuals/Sprites/sizzledpdpad.png" id="2_jxyua"]
+[ext_resource type="Script" path="res://Scenes/mouse_event_forwarding.gd" id="2_ow1bo"]
 [ext_resource type="Texture2D" uid="uid://ggufq0n86mgg" path="res://Visuals/Sprites/sizzledpfacebuttons.png" id="3_010o5"]
 [ext_resource type="Texture2D" uid="uid://drknfkikets7w" path="res://Visuals/Sprites/sizzledpgupbutton.png" id="4_jy8rq"]
 
@@ -30,6 +31,7 @@ albedo_color = Color(0.187176, 0.187176, 0.187176, 1)
 material = SubResource("StandardMaterial3D_55mft")
 
 [node name="dual-pro v4" instance=ExtResource("1_wm45d")]
+script = ExtResource("2_ow1bo")
 
 [node name="Model" parent="." index="0"]
 transform = Transform3D(35, 0, 0, 0, -1.5299e-06, 35, 0, -35, -1.5299e-06, 19.9642, 0, -6.45494)
@@ -47,7 +49,6 @@ mesh = SubResource("QuadMesh_5ojqu")
 [node name="TopScreenView" type="SubViewport" parent="." index="1"]
 canvas_item_default_texture_filter = 0
 physics_object_picking = true
-physics_object_picking_sort = true
 size = Vector2i(256, 192)
 size_2d_override = Vector2i(256, 192)
 
