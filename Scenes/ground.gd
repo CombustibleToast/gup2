@@ -1,25 +1,47 @@
 extends Node3D
 
-@export var pieces : Array # Contains pieces of the ground as PackedScenes.
-const NUM_AT_TIME : int = 3 # Defines the number of pieces which are allowed to spawn at once. `pieces` needs to be at least 1 larger.
-const VELOCITY : Vector3 = Vector3(0,0,1) 
+@onready var pieces : Array = [$Plane2, $Plane] # Contains the mesh pieces of the ground
+@onready var current_piece_index: int = 0 # Index of the currently displayed piece
+@onready var current_piece_distance_moved: float = 500
+const DISTANCE_BEFORE_SWAP: float = 955
+const SWAP_TO_LOCATION: Vector3 = Vector3(-955 * 1.5,0,0)
+const VELOCITY : Vector3 = Vector3(100,0,0) 
 
 var num_spawned : int
-var is_flying : bool
+var is_flying : bool = true
 
-var old_pieces : Array
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	old_pieces = range(NUM_AT_TIME)
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if is_flying: 
-		if num_spawned < NUM_AT_TIME: handle_spawning(delta)
+	pass
+	
+func _physics_process(delta: float) -> void:
+	handle_movement(delta)
+	handle_swap()
+	
+func handle_movement(delta: float):
+	if !is_flying:
+		return
 
-func handle_spawning(delta: float) -> void:
-	if pieces.size() <= NUM_AT_TIME:
+	# Move all pieces and update the running total for distance moved
+	for piece in pieces:
+		piece.position += VELOCITY * delta
+	current_piece_distance_moved += (VELOCITY * delta).length()
+
+func handle_swap():
+	if !(current_piece_distance_moved > DISTANCE_BEFORE_SWAP):
 		return
 	
+	# Get the index of the next piece in the list and update the value
+	current_piece_index = (current_piece_index + 1) % pieces.size()
+
+	# Move the next piece to the move location
+	var new_piece: MeshInstance3D = pieces[current_piece_index]
+	new_piece.position = SWAP_TO_LOCATION
+	print("Moving %s to %s" % [new_piece.name, SWAP_TO_LOCATION])
+
+	# Reset the running movement tracker
+	current_piece_distance_moved = 0
